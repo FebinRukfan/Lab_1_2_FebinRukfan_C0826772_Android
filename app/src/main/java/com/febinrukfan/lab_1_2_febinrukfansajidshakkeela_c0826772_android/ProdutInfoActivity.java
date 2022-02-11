@@ -3,9 +3,11 @@ package com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -49,6 +51,16 @@ public class ProdutInfoActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.mymenu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.mybutton) {
+            startActivity(new Intent(this,ProductListActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void showProductInfo() {
