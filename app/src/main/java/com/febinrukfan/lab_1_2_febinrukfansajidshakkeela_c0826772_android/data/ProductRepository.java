@@ -22,8 +22,12 @@ public class ProductRepository {
         allProducts = productDao.getAllProducts();
     }
 
-    public LiveData<List<Product>> getAllEmployees() {
+    public LiveData<List<Product>> getAllProducts() {
         return allProducts;
+    }
+
+    public LiveData<List<Product>> getFirstProduct() {
+        return productDao.getFirstProduct();
     }
 
     public void insert(Product product) {

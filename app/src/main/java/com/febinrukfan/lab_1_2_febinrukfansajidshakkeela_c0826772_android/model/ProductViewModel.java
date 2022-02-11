@@ -20,10 +20,10 @@ public class ProductViewModel extends AndroidViewModel {
         super(application);
 
         repository = new ProductRepository(application);
-        allProducts = repository.getAllEmployees();
+        allProducts = repository.getAllProducts();
     }
 
-    public LiveData<List<Product>> getFirst() {return allProducts;}
+    public LiveData<List<Product>> getFirstProduct() {return repository.getFirstProduct();}
 
     public void insert(Product product) {repository.insert(product);}
 }
