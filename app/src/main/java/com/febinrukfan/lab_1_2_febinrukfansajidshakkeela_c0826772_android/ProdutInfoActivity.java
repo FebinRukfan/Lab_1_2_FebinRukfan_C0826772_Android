@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
 
@@ -42,13 +43,20 @@ public class ProdutInfoActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.mymenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private void showProductInfo() {
 
 
         productViewModel.getFirstProduct().observe(this, products -> {
             if (products.size() != 0) {
 
-                Toast.makeText(this, products.size()+"", Toast.LENGTH_SHORT).show();
 
                 binding.etPname.setText(products.get(0).getProductName());
                 binding.etPdesc.setText(products.get(0).getProductDesc());
