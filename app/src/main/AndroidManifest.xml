@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lab_1_2_FebinRukfanSajidShakkeela_C0826772_Android">
         <activity
-            android:name=".MainActivity"
+            android:name=".ProdutInfoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

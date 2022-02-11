@@ -1,12 +1,9 @@
 package com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model;// Created by FebinRukfan on 10-02-2022.
 
-import static androidx.room.ForeignKey.CASCADE;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity(
@@ -28,7 +25,7 @@ public class Product {
     @ColumnInfo(name = "product_price")
     private Double productPrice;
 
-    @ColumnInfo(name = "product_name")
+    @ColumnInfo(name = "product_salary")
     private String salary;
 
     @ColumnInfo(name = "provider_lat")
