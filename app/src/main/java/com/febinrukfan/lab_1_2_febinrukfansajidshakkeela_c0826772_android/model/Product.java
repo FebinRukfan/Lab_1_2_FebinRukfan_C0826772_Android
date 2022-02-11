@@ -4,6 +4,7 @@ package com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(
@@ -25,8 +26,6 @@ public class Product {
     @ColumnInfo(name = "product_price")
     private Double productPrice;
 
-    @ColumnInfo(name = "product_salary")
-    private String salary;
 
     @ColumnInfo(name = "provider_lat")
     private double providerLat;
@@ -34,12 +33,14 @@ public class Product {
     @ColumnInfo(name = "provider_long")
     private double providerLong;
 
-    public Product(long id, @NonNull String productName, String productDesc, Double productPrice, String salary, double providerLat, double providerLong) {
+    @Ignore
+    public Product() {
+    }
+    public Product(long id, @NonNull String productName, String productDesc, Double productPrice,double providerLat, double providerLong) {
         this.id = id;
         this.productName = productName;
         this.productDesc = productDesc;
         this.productPrice = productPrice;
-        this.salary = salary;
         this.providerLat = providerLat;
         this.providerLong = providerLong;
     }
@@ -75,14 +76,6 @@ public class Product {
 
     public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
     }
 
     public double getProviderLat() {
