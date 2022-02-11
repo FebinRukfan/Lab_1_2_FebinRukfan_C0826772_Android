@@ -135,6 +135,7 @@ public class ProdutInfoActivity extends AppCompatActivity {
                 binding.etPprice.setEnabled(false);
                 binding.etLat.setEnabled(false);
                 binding.etLon.setEnabled(false);
+                binding.btnAddProduct.setVisibility(View.GONE);
                 binding.etPname.setText(products.get(0).getProductName());
                 binding.etPdesc.setText(products.get(0).getProductDesc());
                 binding.etPprice.setText(""+products.get(0).getProductPrice());

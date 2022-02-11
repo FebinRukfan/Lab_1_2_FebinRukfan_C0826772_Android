@@ -31,6 +31,9 @@ public abstract class ProductDao {
     @Query("DELETE FROM product_table")
     public abstract void deleteAll();
 
+   @Query("DELETE FROM product_table WHERE product_id=:id")
+    public abstract void deletebyid(int id);
+
 
     @Query("UPDATE product_table SET product_name=:name,product_desc=:desc,product_price=:price,provider_lat=:lat,provider_long=:lon WHERE product_id =:id")
     public abstract void update(int id, String name, String desc, Double price, Double lat, Double lon);

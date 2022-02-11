@@ -41,6 +41,11 @@ public class ProductRepository {
         ProductRoomDb.databaseWriteExecutor.execute(() -> productDao.update(id,name,desc,price,lat,lon));
 
     }
+    public void delete_by_id(int id) {
+
+        ProductRoomDb.databaseWriteExecutor.execute(() -> productDao.deletebyid(id));
+
+    }
 
     public LiveData<List<Product>> getProductByID(int id) {
         return productDao.getProductById(id);

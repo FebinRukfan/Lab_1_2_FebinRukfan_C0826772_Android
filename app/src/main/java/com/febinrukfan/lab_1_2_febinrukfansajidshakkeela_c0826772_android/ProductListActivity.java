@@ -51,7 +51,7 @@ public class ProductListActivity extends AppCompatActivity {
             productsList.clear();
             productsList.addAll(products);
 
-            productListAdapter = new ProductListAdapter(this, productsList,binding);
+            productListAdapter = new ProductListAdapter(this, productsList,productViewModel);
             binding.recP.setAdapter(productListAdapter);
 
         });

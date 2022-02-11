@@ -16,6 +16,7 @@ import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.Produt
 import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.R;
 import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.databinding.ActivityProductListBinding;
 import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model.Product;
+import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model.ProductViewModel;
 
 import java.util.ArrayList;
 
@@ -25,11 +26,12 @@ public class ProductListAdapter<T> extends RecyclerView.Adapter<ProductListAdapt
     private ArrayList<Product> productsList;
     private Activity context;
     private ActivityProductListBinding binding;
+    private ProductViewModel productViewModel;
 
-    public ProductListAdapter(Activity context, ArrayList<Product> list,ActivityProductListBinding binding){
+    public ProductListAdapter(Activity context, ArrayList<Product> list, ProductViewModel productViewModel){
         this.productsList = list;
         this.context = context;
-        this.binding = binding;
+        this.productViewModel = productViewModel;
     }
 
     @NonNull
@@ -63,7 +65,7 @@ public class ProductListAdapter<T> extends RecyclerView.Adapter<ProductListAdapt
         holder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                productViewModel.delete_by_id((int) productsList.get(position).getId())  ;
             }
         });
 
