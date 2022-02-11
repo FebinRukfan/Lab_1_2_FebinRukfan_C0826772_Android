@@ -22,12 +22,14 @@ public abstract class ProductDao {
     @Query("SELECT * FROM product_table ORDER BY product_name ASC")
     public abstract LiveData<List<Product>> getAllProducts();
 
+    @Query("SELECT * FROM product_table WHERE product_id=:id")
+    public abstract LiveData<List<Product>> getProductById(int id);
+
     @Query("SELECT * FROM product_table ORDER BY product_id ASC limit 1")
     public abstract LiveData<List<Product>> getFirstProduct();
 
     @Query("DELETE FROM product_table")
     public abstract void deleteAll();
-
 
 
     @Query("UPDATE product_table SET product_name=:name,product_desc=:desc,product_price=:price,provider_lat=:lat,provider_long=:lon WHERE product_id =:id")

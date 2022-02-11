@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,8 +53,10 @@ public class ProductListAdapter<T> extends RecyclerView.Adapter<ProductListAdapt
             public void onClick(View v) {
                 Intent i = new Intent(context, ProdutInfoActivity.class);
                 i.putExtra("value","edit" );
-                i.putExtra("id",productsList.get(position).getId() );
+
+                i.putExtra("id",String.valueOf(productsList.get(position).getId()) );
                 context.startActivity(i);
+
             }
         });
         // delete button click

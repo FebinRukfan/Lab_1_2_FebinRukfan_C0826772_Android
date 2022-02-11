@@ -15,7 +15,7 @@ import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.databi
 import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model.Product;
 import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model.ProductViewModel;
 
-
+import java.util.List;
 
 
 public class ProdutInfoActivity extends AppCompatActivity {
@@ -39,11 +39,13 @@ public class ProdutInfoActivity extends AppCompatActivity {
                 .create(ProductViewModel.class);
 
         String data = getIntent().getStringExtra("value");
-        int id = Integer.parseInt(getIntent().getStringExtra("id"));
+        String id = getIntent().getStringExtra("id");
+        Toast.makeText(this, " "+id, Toast.LENGTH_SHORT).show();
 
         if(data!=null){
-            if(data.equals("edit")){
-                editProductInfo(id);
+            if(data.equals("edit")&&id!=null){
+
+                editProductInfo(Integer.valueOf(id));
             }
         }
         else {
@@ -63,6 +65,16 @@ public class ProdutInfoActivity extends AppCompatActivity {
         binding.etPprice.setEnabled(true);
         binding.etLat.setEnabled(true);
         binding.etLon.setEnabled(true);
+
+         productViewModel.getProductById(id).observe(this, products ->{
+             binding.etPname.setText(products.get(0).getProductName());
+             binding.etPdesc.setText(products.get(0).getProductDesc());
+             binding.etPprice.setText(""+products.get(0).getProductPrice());
+             binding.etLat.setText(""+products.get(0).getProviderLat());
+             binding.etLon.setText(""+products.get(0).getProviderLat());
+
+         });
+
 
 
         
@@ -86,6 +98,8 @@ public class ProdutInfoActivity extends AppCompatActivity {
 
                     productViewModel.update(id,binding.etPname.getText().toString(),binding.etPdesc.getText().toString(),Double.valueOf(binding.etPprice.getText().toString()),
                             Double.valueOf(binding.etLat.getText().toString()),Double.valueOf(binding.etLon.getText().toString()));
+                    startActivity(new Intent(ProdutInfoActivity.this,ProductListActivity.class));
+                    finish();
                 }
             }
         });
