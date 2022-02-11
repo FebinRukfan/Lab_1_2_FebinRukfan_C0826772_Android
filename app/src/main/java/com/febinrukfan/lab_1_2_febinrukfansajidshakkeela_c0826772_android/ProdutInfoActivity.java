@@ -38,11 +38,57 @@ public class ProdutInfoActivity extends AppCompatActivity {
         productViewModel = new ViewModelProvider.AndroidViewModelFactory(this.getApplication())
                 .create(ProductViewModel.class);
 
+        String data = getIntent().getStringExtra("value");
+        int id = Integer.parseInt(getIntent().getStringExtra("id"));
 
+        if(data!=null){
+            if(data.equals("edit")){
+                editProductInfo(id);
+            }
+        }
+        else {
 
             showProductInfo();
 
+        }
 
+
+
+
+    }
+
+    private void editProductInfo(int id) {
+        binding.etPname.setEnabled(true);
+        binding.etPdesc.setEnabled(true);
+        binding.etPprice.setEnabled(true);
+        binding.etLat.setEnabled(true);
+        binding.etLon.setEnabled(true);
+
+
+        
+        binding.btnGetLocation.setVisibility(View.GONE);
+        binding.btnAddProduct.setText("Update");
+
+        binding.btnAddProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(binding.etPname.getText().toString().isEmpty()){
+
+                }else if(binding.etPdesc.getText().toString().isEmpty()){
+                    Toast.makeText(ProdutInfoActivity.this, "Enter Name", Toast.LENGTH_SHORT).show();
+                }else if(binding.etPdesc.getText().toString().isEmpty()){
+                    Toast.makeText(ProdutInfoActivity.this, "Enter Desc", Toast.LENGTH_SHORT).show();
+
+                }else if(binding.etPprice.getText().toString().isEmpty()){
+                    Toast.makeText(ProdutInfoActivity.this, "Enter Price", Toast.LENGTH_SHORT).show();
+
+                }else {
+
+                    productViewModel.update(id,binding.etPname.getText().toString(),binding.etPdesc.getText().toString(),Double.valueOf(binding.etPprice.getText().toString()),
+                            Double.valueOf(binding.etLat.getText().toString()),Double.valueOf(binding.etLon.getText().toString()));
+                }
+            }
+        });
     }
 
 
@@ -70,9 +116,16 @@ public class ProdutInfoActivity extends AppCompatActivity {
             if (products.size() != 0) {
 
 
+                binding.etPname.setEnabled(false);
+                binding.etPdesc.setEnabled(false);
+                binding.etPprice.setEnabled(false);
+                binding.etLat.setEnabled(false);
+                binding.etLon.setEnabled(false);
                 binding.etPname.setText(products.get(0).getProductName());
                 binding.etPdesc.setText(products.get(0).getProductDesc());
                 binding.etPprice.setText(""+products.get(0).getProductPrice());
+                binding.etLat.setText(""+products.get(0).getProviderLat());
+                binding.etLon.setText(""+products.get(0).getProviderLat());
             }else {
                 addDemoProducts();
             }

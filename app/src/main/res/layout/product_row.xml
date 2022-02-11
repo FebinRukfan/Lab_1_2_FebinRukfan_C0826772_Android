@@ -50,17 +50,16 @@
         <ImageView
             android:id="@+id/edit_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_home_24"
-            android:layout_margin="5dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_edit_24"
             />
 
         <ImageView
             android:id="@+id/delete_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_home_24"
-            android:layout_margin="15dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_marginLeft="2dp"
             />
 
     </LinearLayout>

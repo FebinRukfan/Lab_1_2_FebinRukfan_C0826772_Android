@@ -6,6 +6,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.febinrukfan.lab_1_2_febinrukfansajidshakkeela_c0826772_android.model.Product;
 
@@ -28,4 +29,7 @@ public abstract class ProductDao {
     public abstract void deleteAll();
 
 
+
+    @Query("UPDATE product_table SET product_name=:name,product_desc=:desc,product_price=:price,provider_lat=:lat,provider_long=:lon WHERE product_id =:id")
+    public abstract void update(int id, String name, String desc, Double price, Double lat, Double lon);
 }
